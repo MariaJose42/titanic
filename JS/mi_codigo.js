@@ -35,8 +35,88 @@ function principal(){
      grafico_clases();
 
       // Realiza un gráfico circular de hombres y mujeres
+      grafico_hombres_mujeres();
+
+      function grafico_hombres_mujeres(){
+
+        const canvas = document.getElementById('chartsexo');
+        new Chart(canvas,
+       
+        {
+          type: 'pie',
+          data: {
+            labels: ["Hombres", "Mujeres"],
+            datasets: [
+              {
+                label: 'Hombres y Mujeres',
+                data:[ pasajeros_titanic.filter(p=>p.sex =="male").length, pasajeros_titanic.filter(p=>p.sex =="female").length]
+              }
+            ]
+          }
+        });
+     
+     }
      // Realiza un gráfico circular con los supervivientes de hombres y mujeres 
+     grafico_supervivientes_hombres_mujeres()
+
+     function grafico_supervivientes_hombres_mujeres(){
+
+      const canvas = document.getElementById('chartSupervivienteHombresMujeres');
+      new Chart(canvas,
+     
+      {
+        type: 'pie',
+        data: {
+          labels: ["Hombres Supervivientes", "Mujeres Supervivientes"],
+          datasets: [
+            {
+              label: 'Hombres y Mujeres Supervivientes',
+              data:[ pasajeros_titanic.filter(p=>p.survived =="1" && p.sex =="male").length, pasajeros_titanic.filter(p=>p.survived =="1" && p.sex =="female").length]
+            }
+          ]
+        }
+      });
+   
+   }
+     
       // Realiza un gráfico en barras de hombres y mujeres supervivientes por cada clase
+      grafico_clases_supervivientes_sex()
+
+      function grafico_clases_supervivientes_sex(){
+        const canvas = document.getElementById('grafico_clases_supervivientes_sex');
+          new Chart(canvas,
+         
+          {
+            type: 'bar',
+            data: {
+              labels: ["Clase 1", "Clase 2", "Clase 3"],
+              datasets: [
+                {
+                  backgroundColor: ["red","red", "red"],
+                  label: 'Mujeres',
+                  data:[ 
+                    pasajeros_titanic.filter(p=>p.pclass=="1" && p.survived =="1" && p.sex =="female").length,
+                    pasajeros_titanic.filter(p=>p.pclass=="2" && p.survived =="1" && p.sex =="female").length,
+                    pasajeros_titanic.filter(p=>p.pclass=="3" && p.survived =="1" && p.sex =="female").length,
+      
+      
+                  ]
+                },
+                {
+                  backgroundColor: ["blue","blue", "blue"],
+                  label: 'Hombres',
+                  data:[ 
+                    pasajeros_titanic.filter(p=>p.pclass=="1" && p.survived =="1" && p.sex =="male").length,
+                    pasajeros_titanic.filter(p=>p.pclass=="2" && p.survived =="1" && p.sex =="male").length,
+                    pasajeros_titanic.filter(p=>p.pclass=="3" && p.survived =="1" && p.sex =="male").length,
+      
+      
+                  ]
+                },
+              ],
+            }
+          });
+        }
 
     /*  ########################
         #  Muestra por consola #
