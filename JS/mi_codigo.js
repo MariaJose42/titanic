@@ -127,18 +127,18 @@ function principal(){
     //¿En qué bote se salvó y cuantas personas le acompañaban?
 
     //¿Cuántos españoles sobrevivieron?¿En qué clase viajaban?
-    let total_españoles = pasajeros_titanic.filter(p=>p.from.includes("Spain")).length;
-    console.log("Total españoles: "+ total_españoles);
+    let total_españoles = pasajeros_titanic.filter(p=>p.from.includes("Spain"));
+    console.log("Total españoles: "+ total_españoles.length);
 
     generaTabla()
 
     function generaTabla(){
       var tabla = document.getElementById("tabla");
-      for (var i=0;i<total_españoles;i++){
+      for (var i=0;i<total_españoles.length;i++){
         var fila = document.createElement("tr");
         //for (var j=0;j<2;j++){
           var celda= document.createElement("td");
-          var textoCelda= document.createTextNode(total_españoles.name);
+          var textoCelda= document.createTextNode(total_españoles[i].name);
           celda.appendChild(textoCelda);
           fila.appendChild(celda);
         //}
