@@ -130,6 +130,23 @@ function principal(){
     let total_españoles = pasajeros_titanic.filter(p=>p.from.includes("Spain")).length;
     console.log("Total españoles: "+ total_españoles);
 
+    generaTabla()
+
+    function generaTabla(){
+      var tabla = document.getElementById("tabla");
+      for (var i=0;i<total_españoles;i++){
+        var fila = document.createElement("tr");
+        //for (var j=0;j<2;j++){
+          var celda= document.createElement("td");
+          var textoCelda= document.createTextNode(total_españoles.name);
+          celda.appendChild(textoCelda);
+          fila.appendChild(celda);
+        //}
+        tabla.appendChild(fila)
+      }
+      tabla.setAttribute("class","table table-danger")
+    }
+
 
    // ¿Cuántas personas sobrevivieron por cada clase?
 
